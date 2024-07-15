@@ -1,22 +1,17 @@
 services: 
   node:
-    build: .
-    container_name: transcendence
+    build: ./srcs
+    container_name: transcendance
     restart: always
     volumes:
-      - transcendence:/app
+      - transcendance:/app
     ports:
       - "5173:5173"
-    networks:
-      - game
 
 volumes:
-  transcendence:
+  transcendance:
     driver: local
     driver_opts:
       type: none
-      device: /nfs/homes/arahmoun/Desktop/transcendence
+      device: ${HOME}/Desktop/transcendance
       o: bind
-
-networks:
-  game:
