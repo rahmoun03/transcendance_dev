@@ -3,25 +3,26 @@ FROM node:latest
 
 # Create and change to the app directory
 
+RUN mkdir -p app
+
+
 WORKDIR /app
+# RUN touch /app/package.json
 # Copy package.json and package-lock.json (if available)
-# COPY ./package-lock.json /app
-# COPY ./package.json /app
 
 
-COPY package*.json ./
-COPY vite.config.js ./
-
+# COPY    ./package.json /app/package.json
+COPY    setup.sh .
 
 # Install dependencies
-RUN chmod +x package-lock.json package.json vite.config.js
-RUN npm install -y
-# # Copy the rest of the application code
-# COPY run.sh /app/
+RUN chmod +x setup.sh && mv setup.sh /bin/
+
+# RUN npm install vite three three-orbitcontrols lil-gui
+
+# RUN npm install -y
 
 # Expose the port Vite uses
 EXPOSE 5173
 
 # Command to run the Vite development server
-# CMD ["sh", "run.sh"]
-CMD ["sh", "-c", "npx vite --host 0.0.0.0"]
+CMD ["sh", "-c", "setup.sh"]
