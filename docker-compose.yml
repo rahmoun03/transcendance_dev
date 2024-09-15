@@ -13,5 +13,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${HOME}/Desktop/portfolio_V1.0
+      device: ${HOME}/Desktop/transcendance
       o: bind
